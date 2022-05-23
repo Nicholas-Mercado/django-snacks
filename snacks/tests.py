@@ -13,3 +13,23 @@ class SnackTests(SimpleTestCase):
         url = reverse('about')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
+
+    def test_home_page_templates_home(self):
+        url = reverse('home')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'home.html')
+        
+    def test_home_page_templates_base(self):
+        url = reverse('home')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'base.html')
+        
+    def test_about_page_templates_about(self):
+        url = reverse('about')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'about.html')
+        
+    def test_about_page_templates_base(self):
+        url = reverse('about')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'base.html')
